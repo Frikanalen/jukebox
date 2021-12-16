@@ -1,4 +1,4 @@
-import { Video } from "./scheduleEntry";
+import { ScheduleEntry, Video } from "./schedule/scheduleEntry";
 
 export type Schedule = {
   date: Date;
@@ -10,22 +10,17 @@ export type SchedulingContext = {
   currentTime: Date;
 };
 
-export const SeenToday = () => {};
-
-export type CandidateEvaluator = typeof SeenToday;
+export type Criteria = (
+  entries: ScheduleEntry[],
+  candidate: ScheduleEntry
+) => number;
 
 export interface WeightedCriteria {
-  criteria: CandidateEvaluator;
+  criteria: Criteria;
   weight: number;
 }
 
-export interface BooleanCriteria {}
-
-export type Criteria = WeightedCriteria;
-
 export interface Timeslot {
   name: string;
-  criteria: Criteria[];
+  criteria: WeightedCriteria[];
 }
-
-SeenToday();
