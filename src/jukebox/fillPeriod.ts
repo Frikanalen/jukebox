@@ -1,6 +1,6 @@
 import { ScheduleEntry, Video } from "../schedule/scheduleEntry";
 import { Interval } from "date-fns";
-import { WeightedCriteria } from "../evaluator/evaluateCandidates";
+import { WeightedCriteria } from "../evaluator/evaluateCandidate";
 
 const fillPeriod = (
   period: Interval,
@@ -8,7 +8,10 @@ const fillPeriod = (
   candidates: Video[],
   entries: ScheduleEntry[] = []
 ): ScheduleEntry[] => {
-  const nextStart = period.start;
+  // here we pick a video
+
+  const nextStart = period.start; // + chosenVideo.duration + whatever we pad it with
+
   const nextPeriod: Interval = { start: nextStart, end: period.end };
 
   fillPeriod(nextPeriod, criteria, candidates, entries);

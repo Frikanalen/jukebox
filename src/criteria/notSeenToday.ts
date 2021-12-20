@@ -1,9 +1,11 @@
 import { ScheduleEntry } from "../schedule/scheduleEntry";
 import { isSameDay } from "date-fns";
+import { Criteria } from "../evaluator/evaluateCandidate";
+
 // This function helps us avoid scheduling the same video twice in a day
 // to keep the schedule somewhat varied. It returns -1 if the same video
 // exists in the schedule the same day; 0 if not.
-export const notSeenToday = (
+export const notSeenToday: Criteria = (
   schedule: ScheduleEntry[],
   candidate: ScheduleEntry
 ) => {

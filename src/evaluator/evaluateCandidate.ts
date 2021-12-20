@@ -9,3 +9,5 @@ export interface WeightedCriteria {
   criteria: Criteria;
   weight: number;
 }
+
+const evaluateCandidate = () => {};
