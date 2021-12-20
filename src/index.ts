@@ -3,6 +3,7 @@ import { endOfWeek, startOfWeek } from "date-fns"
 import { nb } from "date-fns/locale"
 import { getVideos } from "./modules/core/helpers/getVideos"
 import { fillPeriod } from "./modules/scheduling/helpers/fillPeriod"
+import { createSchedule } from "./modules/scheduling/helpers/createSchedule"
 
 async function main() {
   const startAt = startOfWeek(new Date(), { locale: nb })
@@ -21,7 +22,8 @@ async function main() {
     videos,
   })
 
-  console.log(entries.map((e) => [e.video.title, e.startsAt]))
+  const result = await createSchedule(startAt, endAt, entries)
+  console.log(result)
 }
 
 main().catch(console.error)
