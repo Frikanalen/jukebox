@@ -12,14 +12,16 @@ async function main() {
 
   const entries = fillPeriod(startAt, endAt, {
     weightings: [
-      { criteria: "isRecent", multiplier: 200 },
-      { criteria: "notSeenToday", multiplier: 100 },
-      { criteria: "notSeenThisWeek", multiplier: 50 },
+      { criteria: "notRecentlySeen", multiplier: 10 },
+      { criteria: "notSeenThisWeek", multiplier: 3 },
+      { criteria: "notSeenToday", multiplier: 5 },
+      { criteria: "isRecent", multiplier: 2 },
+      { criteria: "rand", multiplier: 1 },
     ],
     videos,
   })
 
-  console.log(entries)
+  console.log(entries.map((e) => [e.video.title, e.startsAt]))
 }
 
 main().catch(console.error)
