@@ -1,3 +1,4 @@
+import "dotenv/config"
 import { endOfWeek, startOfWeek } from "date-fns"
 import { nb } from "date-fns/locale"
 import { getVideos } from "./modules/core/helpers/getVideos"
