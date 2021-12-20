@@ -8,7 +8,7 @@ export const notSeenToday: Criteria = (video, at, schedule) => {
   return (
     schedule.some((e) => e.video.id === video.id && isSameDay(e.startsAt, at))
       ? -1
-      : 1
+      : 0
   ) as Score
 }
 
@@ -19,7 +19,7 @@ export const notSeenThisWeek: Criteria = (video, at, schedule) => {
         e.video.id === video.id && isSameWeek(e.startsAt, at, { locale: nb })
     )
       ? -1
-      : 1
+      : 0
   ) as Score
 }
 
