@@ -1,7 +1,7 @@
 import { differenceInHours, isSameDay, isSameWeek } from "date-fns"
 import { nb } from "date-fns/locale"
 import { clamp } from "../core/helpers/clamp"
-import { A_YEAR_IN_HOURS } from "./constants"
+import { A_YEAR_IN_HOURS, NOT_RECENTLY_SEEN_PADDING } from "./constants"
 import { Criteria, Score } from "./types"
 
 export const notSeenToday: Criteria = (video, at, schedule) => {
@@ -39,9 +39,9 @@ export const isRecent: Criteria = (video) => {
 }
 
 export const notRecentlySeen: Criteria = (video, _, schedule) => {
-  const lastTen = schedule.slice(-10)
+  const recents = schedule.slice(-NOT_RECENTLY_SEEN_PADDING)
 
-  return (lastTen.some((e) => e.video.id === video.id) ? -1 : 0) as Score
+  return (recents.some((e) => e.video.id === video.id) ? -1 : 0) as Score
 }
 
 export const rand: Criteria = () => {
