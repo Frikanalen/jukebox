@@ -37,3 +37,7 @@ export const isRecent: Criteria = (video) => {
   // it will continue to decrease into the negatives, past -1
   return clamp(score, -1, 1) as Score
 }
+
+export const rand: Criteria = () => {
+  return (Math.random() * 2 - 1) as Score
+}
