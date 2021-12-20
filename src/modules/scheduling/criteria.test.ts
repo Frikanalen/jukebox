@@ -34,7 +34,7 @@ test("notSeenToday", () => {
   const resultA = criteria.notSeenToday(videoA, now, schedule)
   const resultB = criteria.notSeenToday(videoC, now, schedule)
 
-  expect(resultA).toBe(1)
+  expect(resultA).toBe(0)
   expect(resultB).toBe(-1)
 })
 
@@ -47,7 +47,7 @@ test("notSeenThisWeek", () => {
   const resultA = criteria.notSeenThisWeek(videoA, now, schedule)
   const resultB = criteria.notSeenThisWeek(videoC, now, schedule)
 
-  expect(resultA).toBe(1)
+  expect(resultA).toBe(0)
   expect(resultB).toBe(-1)
 })
 
