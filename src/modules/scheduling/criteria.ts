@@ -38,6 +38,12 @@ export const isRecent: Criteria = (video) => {
   return clamp(score, -1, 1) as Score
 }
 
+export const notRecentlySeen: Criteria = (video, _, schedule) => {
+  const lastTen = schedule.slice(-10)
+
+  return (lastTen.some((e) => e.video.id === video.id) ? -1 : 0) as Score
+}
+
 export const rand: Criteria = () => {
   return (Math.random() * 2 - 1) as Score
 }
