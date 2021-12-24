@@ -13,11 +13,12 @@ async function main() {
 
   const entries = fillPeriod(startAt, endAt, {
     weightings: [
+      { criteria: "notScheduled", multiplier: 30 },
       { criteria: "notRecentlySeen", multiplier: 20 },
       { criteria: "notSeenThisWeek", multiplier: 10 },
-      { criteria: "notSeenToday", multiplier: 5 },
+      { criteria: "notSeenToday", multiplier: 10 },
       { criteria: "isRecent", multiplier: 2 },
-      { criteria: "rand", multiplier: 2 },
+      { criteria: "rand", multiplier: 1 },
     ],
     videos,
   })

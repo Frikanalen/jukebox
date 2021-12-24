@@ -4,6 +4,10 @@ import { clamp } from "../core/helpers/clamp"
 import { A_YEAR_IN_HOURS, NOT_RECENTLY_SEEN_PADDING } from "./constants"
 import { Criteria, Score } from "./types"
 
+export const notScheduled: Criteria = (video, _, schedule) => {
+  return (schedule.find((e) => e.video.id === video.id) ? -1 : 0) as Score
+}
+
 export const notSeenToday: Criteria = (video, at, schedule) => {
   return (
     schedule.some((e) => e.video.id === video.id && isSameDay(e.startsAt, at))
