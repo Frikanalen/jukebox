@@ -11,6 +11,10 @@ async function main() {
 
   const videos = await getVideos()
 
+  if (videos.length === 0) {
+    throw new Error("No jukeboxable videos!")
+  }
+
   const entries = fillPeriod(startAt, endAt, {
     weightings: [
       { criteria: "notScheduled", multiplier: 30 },
