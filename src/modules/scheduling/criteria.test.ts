@@ -51,6 +51,21 @@ test("notSeenThisWeek", () => {
   expect(resultB).toBe(-1)
 })
 
+test("notRecentlySeen", () => {
+  const schedule = [
+    getMockScheduleEntry(videoA, sub(now, { days: 24 })),
+    getMockScheduleEntry(videoC, sub(now, { days: 2 })),
+  ]
+
+  const resultA = criteria.notRecentlySeen(videoB, now, schedule)
+  const resultB = criteria.notRecentlySeen(videoC, now, schedule)
+
+  expect(resultA).toBe(0)
+
+  expect(resultB).toBeLessThan(0)
+  expect(resultB).toBeGreaterThan(-1)
+})
+
 test("isRecent", () => {
   const videos = [videoA, videoB, videoC]
 

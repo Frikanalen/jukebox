@@ -44,8 +44,13 @@ export const isRecent: Criteria = (video) => {
 
 export const notRecentlySeen: Criteria = (video, _, schedule) => {
   const recents = schedule.slice(-NOT_RECENTLY_SEEN_PADDING)
+  const index = recents.findIndex((e) => e.video.id === video.id)
 
-  return (recents.some((e) => e.video.id === video.id) ? -1 : 0) as Score
+  if (index === -1) {
+    return 0 as Score
+  }
+
+  return clamp(index / NOT_RECENTLY_SEEN_PADDING - 1, -1, 0) as Score
 }
 
 export const rand: Criteria = () => {
