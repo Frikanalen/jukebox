@@ -19,6 +19,7 @@ async function main() {
     weightings: [
       { criteria: "notScheduled", multiplier: 30 },
       { criteria: "notRecentlySeen", multiplier: 20 },
+      { criteria: "notRecentlySeenFromSameOrganization", multiplier: 10 },
       { criteria: "notSeenThisWeek", multiplier: 10 },
       { criteria: "notSeenToday", multiplier: 10 },
       { criteria: "isRecent", multiplier: 2 },
