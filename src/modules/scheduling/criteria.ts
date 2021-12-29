@@ -43,7 +43,7 @@ export const isRecent: Criteria = (video) => {
 }
 
 export const notRecentlySeen: Criteria = (video, _, schedule) => {
-  const recents = schedule.slice(-NOT_RECENTLY_SEEN_PADDING)
+  const recents = schedule.slice(-NOT_RECENTLY_SEEN_PADDING).reverse()
   const index = recents.findIndex((e) => e.video.id === video.id)
 
   if (index === -1) {

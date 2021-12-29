@@ -58,7 +58,7 @@ test("notRecentlySeen", () => {
   ]
 
   const resultA = criteria.notRecentlySeen(videoB, now, schedule)
-  const resultB = criteria.notRecentlySeen(videoC, now, schedule)
+  const resultB = criteria.notRecentlySeen(videoA, now, schedule)
 
   expect(resultA).toBe(0)
 
