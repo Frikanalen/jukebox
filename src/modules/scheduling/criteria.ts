@@ -53,6 +53,23 @@ export const notRecentlySeen: Criteria = (video, _, schedule) => {
   return clamp(index / NOT_RECENTLY_SEEN_PADDING - 1, -1, 0) as Score
 }
 
+export const notRecentlySeenFromSameOrganization: Criteria = (
+  video,
+  _,
+  schedule
+) => {
+  const recents = schedule.slice(-NOT_RECENTLY_SEEN_PADDING).reverse()
+  const index = recents.findIndex(
+    (e) => e.video.organization.id === video.organization.id
+  )
+
+  if (index === -1) {
+    return 0 as Score
+  }
+
+  return clamp(index / NOT_RECENTLY_SEEN_PADDING - 1, -1, 0) as Score
+}
+
 export const rand: Criteria = () => {
   return (Math.random() * 2 - 1) as Score
 }
