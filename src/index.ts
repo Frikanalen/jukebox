@@ -17,9 +17,10 @@ async function main() {
 
   const entries = fillPeriod(startAt, endAt, {
     weightings: [
+      // We don't want the same organization getting multiple videos in at once
+      { criteria: "notRecentlySeenFromSameOrganization", multiplier: 50 },
       { criteria: "notScheduled", multiplier: 30 },
       { criteria: "notRecentlySeen", multiplier: 20 },
-      { criteria: "notRecentlySeenFromSameOrganization", multiplier: 10 },
       { criteria: "notSeenThisWeek", multiplier: 10 },
       { criteria: "notSeenToday", multiplier: 10 },
       { criteria: "isRecent", multiplier: 2 },
