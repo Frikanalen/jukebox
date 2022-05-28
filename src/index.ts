@@ -4,6 +4,8 @@ import { nb } from "date-fns/locale"
 import { getVideos } from "./modules/core/helpers/getVideos"
 import { fillPeriod } from "./modules/scheduling/helpers/fillPeriod"
 import { createSchedule } from "./modules/scheduling/helpers/createSchedule"
+import { Logger } from "tslog";
+export const log: Logger = new Logger();
 
 async function main() {
   const startAt = startOfWeek(new Date(), { locale: nb })
@@ -30,7 +32,7 @@ async function main() {
   })
 
   const result = await createSchedule(startAt, endAt, entries)
-  console.log(result)
+  log.info(result)
 }
 
-main().catch(console.error)
+main().catch(log.error)
