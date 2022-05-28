@@ -35,4 +35,4 @@ async function main() {
   log.info(result)
 }
 
-main().catch(log.error)
+main().catch((e) => log.error(e))
