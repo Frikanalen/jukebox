@@ -23,6 +23,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
       - 
+        name: Install dependencies FIXME Redundant
+        run: yarn
+      - 
         name: Run tests and generate coverage report
         run: yarn test:ci
       - 
