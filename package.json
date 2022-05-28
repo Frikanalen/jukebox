@@ -3,7 +3,8 @@
     "test": "jest",
     "build": "tsc",
     "start": "node build/index.js",
-    "dev": "ts-node-dev src/index.ts"
+    "dev": "ts-node-dev src/index.ts",
+    "test:ci": "jest --ci --coverage"
   },
   "name": "jukebox",
   "version": "1.0.0",
