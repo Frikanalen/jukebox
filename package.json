@@ -2,7 +2,7 @@
   "scripts": {
     "test": "jest",
     "build": "tsc",
-    "start": "node build/index.js",
+    "start": "node --enable-source-maps build/index.js",
     "dev": "ts-node-dev src/index.ts",
     "test:ci": "jest --ci --coverage"
   },
