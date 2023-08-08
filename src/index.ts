@@ -5,6 +5,7 @@ import { fillPeriod } from "./modules/scheduling/helpers/fillPeriod"
 import { createSchedule } from "./modules/scheduling/helpers/createSchedule"
 import { getDateRange } from "./args"
 import { log } from "./log"
+import { exit } from "process"
 
 const main = async () => {
   try {
@@ -35,7 +36,7 @@ const main = async () => {
     log.info(result)
   } catch (error: any) {
     log.error(error.message)
-    throw error
+    exit(1)
   }
 }
 
